@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+  <div ng-app="myApp">
+  <div ng-controller="myCtrl">
+  <div ng-controller="myCtrl2">
+    <form>
+	<p>Enter Company Name: <input type="text" ng-model="cname"></input></p>
+<p>Company<span ng-bind="cname"></span></p>
+<br>
+<p>Enter Location: <input type="text" ng-model="value"></input></p>
+<p>location<span ng-bind="value"></span>!</p>
+	</form>
+ {{cname}}
+      {{value}}
+       </div>
+      </div>
+    </div>
+	<script>
+angular.module('myApp', []).controller('myCtrl', function($scope, $rootScope) {
+  var a = //something in the scope
+  //put it in the root scope
+  $rootScope.location = "Mumbai";
+});
+
+angular.module('myApp').controller('myCtrl2', function($scope, $rootScope) {
+  var b = //get var a from root scope somehow
+  //use var b
+$scope.cname="Wipro";
+$scope.value = $rootScope.location;
+
+});
+
+</script>
+</body>
+</html>

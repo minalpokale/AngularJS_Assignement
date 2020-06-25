@@ -1,0 +1,21 @@
+<html>
+   <head>
+      <title>Angular JS Services</title>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js">
+      </script>
+   </head>
+   
+   <div ng-app="app">
+  <input type="number" ng-model="numb1" placeholder="number1" size="5px"><br />
+  <div>{{ numb1 | sqrt }}</div>
+</div>
+      
+      <script>
+        angular.module('app', []).filter('sqrt', function() {
+   return function(number) {
+      return Math.sqrt(number);
+   };
+});
+   </script>   
+   </body>
+</html>

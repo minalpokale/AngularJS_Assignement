@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="MyApp" ng-controller="Mycontroller">
+Current Date:{{today}}
+</div>
+<script>
+var app=angular.module('MyApp',[]);
+app.controller('Mycontroller',function($scope)
+{
+$scope.today=new Date();
+
+});
+
+
+</script>
+
+</body>
+</html>

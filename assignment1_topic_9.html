@@ -1,0 +1,62 @@
+<html ng-app="myApp">
+
+  <head>
+    <script  src="https://code.angularjs.org/1.3.8/angular.js"></script>
+    <script  src="https://cdn.rawgit.com/angular-translate/bower-angular-translate/2.5.0/angular-translate.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div ng-controller="translateController">
+      <h1>angularJS translator</h1>
+      
+      <div>
+        <button ng-click="changeLanguage('en')">English</button>
+        <button ng-click="changeLanguage('ge')">German</button>
+      </div>
+      
+      <h2>{{'language' | translate}}</h2>
+      
+      String:
+      <p>{{'text_string' | translate}}</p>
+
+      Number:
+      <p>{{'number_str' | translate}}</p>
+      
+    </div>
+  
+
+
+<script>
+var app = angular.module("myApp",['pascalprecht.translate']);
+
+app.config(["$translateProvider", function($translateProvider){
+  
+  var en_translations = {
+    "language" : "Selected Language English",
+    "text_string" : "welcome to angularJS development",
+    "number_str" : "one,two,three,four"  
+  }
+  
+  var sp_translations = {
+    "language" : "Selected Language German",
+    "text_string" : "Willkommen bei der Entwicklung von AngularJS",  
+    "number_str" : "eins,zwei,drei,vier"
+  }
+  
+  $translateProvider.translations('en',en_translations);
+  
+  $translateProvider.translations('ge',sp_translations);
+  
+  $translateProvider.preferredLanguage('en');
+  
+}]);
+
+app.controller("translateController" ,["$scope","$translate",function($scope,$translate){
+  $scope.changeLanguage = function(lang){
+   $translate.use(lang); 
+  }
+}]);
+</script>
+</body>
+</html>

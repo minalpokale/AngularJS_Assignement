@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: pink;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<h1> CD Parlor </h1>
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+<table>
+<th>Name</th>
+<th>HeadOffice</th>
+<th>Title</th>
+<th>Language</th>
+<th>Price</th>
+  <tr>
+    <td>{{name}}</td>
+    <td>{{ Head }}</td>
+    <td>{{tit}}</td>
+    <td>{{langu}}</td>
+    <td>{{price|currency}}</td>
+  </tr>
+  <tr ng-repeat="x in information.CD">
+  <td>{{x.name}}</td>
+    <td>{{x.head }}</td>
+    <td>{{x.tit}}</td>
+    <td>{{x.lang}}</td>
+    <td>{{x.Price|currency}}</td>
+  </tr>
+</table>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope) {
+    $scope.name="Bloom and Grow";
+    $scope.Head="Delhi";
+    $scope.tit="Bloom";
+    $scope.langu="C++";
+    $scope.price="100";
+    $scope.information ={
+    CD:[
+    {name:'Shine',head:'Pune',tit:'Ssharp',lang:'C',Price:'150'}]
+    };
+    
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+</head>
+<body>
+<h1>Converting first Letter of the String into capital</h1>
+<div ng-app="app">
+    <div ng-controller="Ctrl">
+	Enter the Text<input type="text" ng-model="msg"></input>
+        <p><b>Resulted Text</b> {{msg | CamelCaseFilter}}</p>
+    </div>
+</div>
+<script>
+var app = angular.module('app', []);
+
+app.controller('Ctrl', function ($scope) {
+   $scope.msg = "how was your day today";
+});
+
+app.filter('CamelCaseFilter', function() {
+    return function(input) {
+      //Check for valid string
+      if(angular.isString(input) && input.length > 0) {
+        var inputArray = input.split(' ');
+        for(var i=0; i<inputArray.length; i++) {
+          var value = inputArray[i];
+          inputArray[i] =  value.charAt(0).toUpperCase() + value.substr(1).toLowerCase();
+        }
+        return inputArray.join(' ');
+      } else {
+        return input;
+      }
+    };
+});
+
+</script>
+</body>
+</html>

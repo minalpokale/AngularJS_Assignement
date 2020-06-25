@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<body background="bokk.jpg">
+<div ng-app="myApp">
+<center><h1> We Love Books! <h1> </center>
+<h4><p><b>Address:Sector no.17,<br>
+Near ICICI Bank,
+<br>Navi Mumbai-400071</p></b>
+</h4>
+<ul>
+<li><h3>Believe In Yourself</h3></li>
+<li><h3>The Secret</h3></li>
+<li><h3>Life It What You Make It</h3></li>
+<li><h3>Attitude Is Everything:Change Your Attitude</h3> </li>
+<li><h3>Discover Yourself</h3></li>
+</ul>
+
+<a href="viewbook.htm">View all Books</a>
+<a href="newbook.htm">New Books</a>
+
+<div ng-view></div>
+</div>
+<script>
+var app = angular.module('myApp', ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/viewbook", {
+        templateUrl : "viewbook.htm"
+    })						
+    .when("/newbook", {
+        templateUrl : "newbook.htm"
+    });
+});
+</script>
+</body>
+</html>
